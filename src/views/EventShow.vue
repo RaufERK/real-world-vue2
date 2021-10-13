@@ -3,7 +3,7 @@
     <div class="event-header">
       <span class="eyebrow">@{{ event.time }} on {{ event.date }}</span>
       <h1 class="title">{{ event.title }}</h1>
-      <h5>Organized by {{ event.organizer }}</h5>
+      <h5>Organized by {{ event.organizer ? event.organizer.name : '' }}</h5>
       <h5>Category: {{ event.category }}</h5>
     </div>
     <BaseIcon name="map"><h2>Location</h2></BaseIcon>
@@ -28,23 +28,20 @@
   </div>
 </template>
 <script>
-import EventServises from '@/services/EventServises.js'
+import { mapState, mapActions } from 'vuex'
 export default {
   name: 'EventShow',
   props: {
     id: String,
   },
-  data() {
-    return {
-      event: {},
-    }
+  computed: {
+    ...mapState(['event']),
+  },
+  methods: {
+    ...mapActions(['fetchEvent']),
   },
   created() {
-    EventServises.getEvent(this.id)
-      .then(({ data }) => {
-        this.event = data
-      })
-      .catch((error) => (this.event = error))
+    this.fetchEvent(this.id)
   },
 }
 </script>

@@ -1,5 +1,7 @@
 {
-  "test": {"test": "test test"},
+  "test": {
+    "test": "test test"
+  },
   "events": [
     {
       "id": 1,
@@ -72,6 +74,48 @@
           "name": "Mary Gordon"
         }
       ]
+    },
+    {
+      "id": 9650077,
+      "category": "community",
+      "organizer": {
+        "id": "avc1321",
+        "name": "Rauf Erk"
+      },
+      "title": "222",
+      "description": "2222",
+      "location": "222",
+      "date": "2021-10-05T15:25:00.000Z",
+      "time": "11:00",
+      "attendees": []
+    },
+    {
+      "id": 6797718,
+      "category": "education",
+      "organizer": {
+        "id": "avc1321",
+        "name": "Rauf Erk"
+      },
+      "title": "3333",
+      "description": "3333",
+      "location": "3333",
+      "date": "2021-10-06T10:42:00.000Z",
+      "time": "8:00",
+      "attendees": []
+    },
+    {
+      "id": 3132003,
+      "category": "community",
+      "organizer": {
+        "id": "avc1321",
+        "name": "Rauf Erk"
+      },
+      "title": "333",
+      "description": "333",
+      "location": "3333",
+      "date": "2021-10-12T11:32:00.000Z",
+      "time": "11:00",
+      "attendees": []
     }
   ]
 }
