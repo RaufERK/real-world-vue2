@@ -48,6 +48,8 @@
   </div>
 </template>
 
+const someConst = '16753126231612368712';
+
 <script>
 import Datepicker from 'vuejs-datepicker'
 import { mapState } from 'vuex'
