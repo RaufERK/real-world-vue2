@@ -1,9 +1,9 @@
 <template>
   <div class="event-list">
-    <h1>Event Listening</h1>
-    <h6>totalEvents: {{ totalEvents }} lastPage: {{ lastPage }}</h6>
+    <h2>Event for {{ user.user.name }}</h2>
+    <h6>totalEvents: {{ event.totalEvents }} lastPage: {{ lastPage }}</h6>
     <EventCard
-      v-for="event in events"
+      v-for="event in event.events"
       :key="event.id"
       name="users"
       :event="event"
@@ -26,8 +26,6 @@
   </div>
 </template>
 
-const someConst = '16753126231612368712';
-
 <script>
 import EventCard from '@/components/EventCard.vue'
 import { mapActions, mapState } from 'vuex'
@@ -37,7 +35,6 @@ export default {
     EventCard,
   },
   created() {
-    console.log('RUN!!!')
     this.fetchEvents({ perPage: this.perPage, page: this.page })
   },
   computed: {
@@ -45,15 +42,16 @@ export default {
       return 2
     },
     lastPage() {
-      return Math.ceil(this.totalEvents / this.perPage)
+      return Math.ceil(this.event.totalEvents / this.perPage)
     },
     page() {
       return parseInt(this.$route.query.page) || 1
     },
-    ...mapState(['events', 'totalEvents']),
+    ...mapState(['event', 'user']),
+    ...mapState('notification', ['notifications']),
   },
   methods: {
-    ...mapActions(['fetchEvents']),
+    ...mapActions('event', ['fetchEvents']),
   },
 }
 </script>

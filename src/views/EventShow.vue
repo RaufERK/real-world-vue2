@@ -36,10 +36,12 @@ export default {
     id: String,
   },
   computed: {
-    ...mapState(['event']),
+    ...mapState({
+      event: (state) => state.event.event,
+    }),
   },
   methods: {
-    ...mapActions(['fetchEvent']),
+    ...mapActions('event', ['fetchEvent']),
   },
   created() {
     this.fetchEvent(this.id)

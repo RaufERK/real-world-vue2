@@ -48,10 +48,9 @@
   </div>
 </template>
 
-
 <script>
 import Datepicker from 'vuejs-datepicker'
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 export default {
   components: {
     Datepicker,
@@ -71,10 +70,10 @@ export default {
     ...mapState(['user', 'categories']),
   },
   methods: {
-    // ...mapActions(['createEvent']),
+    ...mapActions('event', ['createEvent']),
     createEvent() {
       this.$store
-        .dispatch('createEvent', this.event)
+        .dispatch('event/createEvent', this.event)
         .then(() => {
           this.$router.push({
             name: 'event-show',
@@ -84,13 +83,11 @@ export default {
           })
           this.event = this.createFreshEventObject()
         })
-        .catch(() => {
-          console.log('There was a problem to creating your event')
-        })
+        .catch(() => {})
     },
     createFreshEventObject() {
-      const organizer = this.$store.state.user
-      const id = Math.floor(Math.random() * 10000000)
+      const organizer = this.$store.state.user.user
+      const id = String(Math.floor(Math.random() * 10000000))
       return {
         id,
         category: '',
